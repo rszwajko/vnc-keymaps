@@ -2,17 +2,20 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
         with:
-          node-version-file: "package.json"
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+          node-version-file: 'package.json'
+      - run: |
+          npm version
+          npm clean-install
+
+      - run: npm run build

@@ -1,23 +1,12 @@
 {
   "verbose": true,
-  "roots": [
-    "<rootDir>/src",
-    "<rootDir>/tests"
-  ],
-  "modulePaths": [
-    "<rootDir>/src",
-    "<rootDir>/tests"
-  ],
+  "roots": ["<rootDir>/src", "<rootDir>/tests"],
+  "modulePaths": ["<rootDir>/src", "<rootDir>/tests"],
   "preset": "ts-jest/presets/js-with-ts",
   "testEnvironment": "node",
-  "testPathIgnorePatterns": [
-    "<rootDir>/node_modules/",
-    "<rootDir>/dist/"
-  ],
+  "testPathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/dist/"],
   "transform": {
     "^.+\\.ts$": "ts-jest"
   },
-  "testMatch": [
-    "<rootDir>/tests/**/*.test.ts"
-  ]
+  "testMatch": ["<rootDir>/tests/**/*.test.ts"]
 }

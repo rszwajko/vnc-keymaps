@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com:kubevirt-ui/vnc-keymaps.git"
+    "url": "git+https://github.com/kubevirt-ui/vnc-keymaps.git"
   },
   "author": "Radoslaw Szwajkowski <rszwajko@redhat.com>",
   "license": "MIT",
@@ -33,17 +33,16 @@
     "keysym",
     "keystroke"
   ],
+  "packageManager": "^npm@10.9.4",
   "engines": {
-    "yarn": "^1.22.0 ",
-    "node": ">=20.19.0"
+    "npm": "^10.9.4",
+    "node": "^22.21.1"
   },
   "scripts": {
-    "prebuild": "yarn test",
-    "build": "tsup",
-    "pretest": "yarn lint",
-    "test": "jest --rootDir=. --config=jest.config.json",
-    "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "yarn lint --fix "
+    "build": "npm run test && tsup",
+    "test": "npm run lint && jest --rootDir=. --config=jest.config.json",
+    "lint": "eslint . && prettier . --check",
+    "lint:fix": "eslint . --fix && prettier . --write"
   },
   "tsup": {
     "entry": [
@@ -61,6 +60,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@eslint/compat": "^2.0.0",
     "@eslint/js": "^9.28.0",
     "@types/jest": "^29.5.14",
     "eslint-plugin-prettier": "^5.5.1",
