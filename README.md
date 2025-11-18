@@ -1,6 +1,6 @@
 # vnc-keymaps
 
-Libary part extracted from [PR 2486](https://github.com/kubevirt-ui/kubevirt-plugin/pull/2486)
+Library part extracted from [PR 2486](https://github.com/kubevirt-ui/kubevirt-plugin/pull/2486)
 
 The goal is to convert text copy-pasted to the VNC console to a sequence of keycodes matching the language configured on the (remote) virtual machine.
 General steps in this use case:
@@ -14,7 +14,7 @@ Mapping code point to keystrokes:
 1. use ucs2keysym() method to convert Unicode code to X11 keysym code. Functionality is part of `xorg-server-1.12.2/hw/xquartz/keysym2ucs.c` that was ported to TypeScript.
 2. map keysym code to mnemonic name using `keysym_to_name` mapping based on [XKB mappings](https://github.com/xkbcommon/libxkbcommon/blob/master/src/ks_tables.h)
 3. check if there is a mapping for that name in the keymap for the chosen keyboard layout. The keymaps are in Qemu format. In Qemu they are used to enforce a keyboard layout (-k switch).
-4. resolved mapping consist of the Qemu keycode coressponding to physical key and a list of modifieres i.e. shift, altgr, control.
+4. resolved mapping consist of the Qemu keycode corresponding to physical key and a list of modifiers i.e. shift, altgr, control.
 
 Example:
 
@@ -51,7 +51,7 @@ Steps:
    dnf install qemu-tools
    ```
 2. use `qemu-keymap` command to extract information from X11 keymaps
-3. run `port_keymaps` script to adjust the licence and correct the syntax to TypeScript
+3. run `port_keymaps` script to adjust the license and correct the syntax to TypeScript
 
    ```bash
        qemu-keymap -l us | ./port_keymap.sh > src/keymaps/eng-us.ts
@@ -59,7 +59,7 @@ Steps:
 
 4. correct the formatting
    ```bash
-   yarn lint:fix
+   npm run lint:fix
    ```
    The command can be patched and build from sources.
 5. patch the command:
@@ -90,7 +90,7 @@ index 1c081db287..33ae4808e3 100644
 
 # Debugging with xkbcli
 
-Note that xkb keycodes(and evdev keycodes) need to be converted to Qemu forma before using in the keymap.
+Note that xkb keycodes(and evdev keycodes) need to be converted to Qemu format before using in the keymap.
 
 1. check the rules for a single char
    ```bash
@@ -100,7 +100,7 @@ Note that xkb keycodes(and evdev keycodes) need to be converted to Qemu forma be
    38       AC01      1        English (US)         2       [ Shift ]
    38       AC01      1        English (US)         2       [ Lock ]
    ```
-2. get the full keyamp in xkb format
+2. get the full keymap in xkb format
 
    ```bash
    xkbcli compile-keymap --layout us
