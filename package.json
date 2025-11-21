@@ -38,8 +38,8 @@
   ],
   "packageManager": "npm@10.9.4",
   "engines": {
-    "npm": "^10.9.4",
-    "node": "^22.21.1"
+    "npm": ">=10.9.4",
+    "node": ">=22.21.1"
   },
   "scripts": {
     "build": "npm run test && tsup",
