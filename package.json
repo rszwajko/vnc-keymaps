@@ -1,6 +1,6 @@
 {
   "name": "@kubevirt-ui/vnc-keymaps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
