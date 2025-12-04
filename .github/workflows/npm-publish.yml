@@ -33,10 +33,11 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@kubevirt-ui-ext'
       - run: |
           npm version
           npm clean-install --verbose --ignore-scripts --no-audit
       - run: npm run build
-      - run: npm publish
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_FOR_KUBEVIRT_UI_EXT }}
