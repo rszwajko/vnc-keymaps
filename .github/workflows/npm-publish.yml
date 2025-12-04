@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
 jobs:
-  build:
+  buildForGitHubPackages:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,8 +18,23 @@ jobs:
           # scope - Defaults to the user or organization that owns the workflow file
       - run: |
           npm version
-          npm clean-install
+          npm clean-install --verbose --ignore-scripts --no-audit
       - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  buildForNpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+      - run: |
+          npm version
+          npm clean-install --verbose --ignore-scripts --no-audit
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
