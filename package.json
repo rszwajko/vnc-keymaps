@@ -1,11 +1,11 @@
 {
   "name": "@kubevirt-ui/vnc-keymaps",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "description": "Keymps for VNC",
+  "description": "Keymaps for VNC",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -39,7 +39,7 @@
   "packageManager": "npm@10.9.4",
   "engines": {
     "npm": ">=10.9.4",
-    "node": ">=22.21.1"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "build": "npm run test && tsup",
